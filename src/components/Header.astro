@@ -1,0 +1,122 @@
+---
+import PhoneButton from './PhoneButton';
+---
+
+<header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="/" class="flex items-center space-x-2" aria-label="Tigrex Move - Home">
+          <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+            </svg>
+          </div>
+          <span class="text-xl font-bold text-gray-900">Tigrex Move</span>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:block">
+        <div class="flex items-center space-x-8">
+          <div class="relative group">
+            <button class="flex items-center text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200" aria-expanded="false">
+              Services
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <div class="py-1" role="menu">
+                <a href="/services/residential-moving" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50" role="menuitem">Residential Moving</a>
+                <a href="/services/commercial-moving" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50" role="menuitem">Commercial Moving</a>
+                <a href="/services/packing-services" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50" role="menuitem">Packing Services</a>
+                <a href="/services/storage-solutions" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50" role="menuitem">Storage Solutions</a>
+                <a href="/services/international-removals" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50" role="menuitem">International Removals</a>
+                <a href="/services/man-and-van" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50" role="menuitem">Man & Van</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative group">
+            <button class="flex items-center text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200" aria-expanded="false">
+              Areas
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <div class="py-1" role="menu">
+                <a href="/areas/london" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50" role="menuitem">London</a>
+                <a href="/areas/manchester" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50" role="menuitem">Manchester</a>
+                <a href="/areas/birmingham" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50" role="menuitem">Birmingham</a>
+                <a href="/areas/leeds" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50" role="menuitem">Leeds</a>
+                <a href="/areas/glasgow" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50" role="menuitem">Glasgow</a>
+                <a href="/areas/bristol" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50" role="menuitem">Bristol</a>
+              </div>
+            </div>
+          </div>
+
+          <a href="/about" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">About</a>
+          <a href="/faq" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">FAQ</a>
+          <a href="/contact" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">Contact</a>
+        </div>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="flex items-center space-x-4">
+        <PhoneButton client:idle />
+        <a href="/quote" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium transition-colors duration-200 text-sm">
+          Get Quote
+        </a>
+
+        <!-- Mobile menu button -->
+        <button type="button" class="md:hidden text-gray-700 hover:text-blue-600" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+          <span class="sr-only">Open main menu</span>
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="md:hidden hidden" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1 border-t border-gray-200">
+        <div class="space-y-1">
+          <button class="block px-3 py-2 text-gray-700 font-medium w-full text-left" aria-expanded="false">
+            Services
+          </button>
+          <div class="pl-4 space-y-1">
+            <a href="/services/residential-moving" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600">Residential Moving</a>
+            <a href="/services/commercial-moving" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600">Commercial Moving</a>
+            <a href="/services/packing-services" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600">Packing Services</a>
+            <a href="/services/storage-solutions" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600">Storage Solutions</a>
+            <a href="/services/international-removals" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600">International Removals</a>
+          </div>
+        </div>
+
+        <a href="/about" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">About</a>
+        <a href="/faq" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">FAQ</a>
+        <a href="/contact" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Mobile menu toggle
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function() {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden');
+        mobileMenuButton.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+      });
+    }
+  });
+</script>

@@ -1,0 +1,574 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import QuoteForm from '../../components/QuoteForm';
+
+export async function getStaticPaths() {
+  const cities = [
+    {
+      slug: 'london',
+      name: 'London',
+      population: '9.5 million',
+      description: 'Professional moving services across all London boroughs including Central London, North London, South London, East London, and West London.',
+      landmarks: ['Tower Bridge', 'Big Ben', 'London Eye', 'Buckingham Palace'],
+      areas: [
+        'Central London', 'Westminster', 'Camden', 'Islington', 'Hackney', 'Tower Hamlets',
+        'Greenwich', 'Lewisham', 'Southwark', 'Lambeth', 'Wandsworth', 'Merton',
+        'Kingston upon Thames', 'Richmond upon Thames', 'Hounslow', 'Ealing', 'Brent',
+        'Barnet', 'Enfield', 'Haringey', 'Waltham Forest', 'Redbridge', 'Havering',
+        'Barking and Dagenham', 'Newham', 'Bexley', 'Bromley', 'Croydon', 'Sutton'
+      ],
+      postcodes: ['E1', 'W1', 'SW1', 'NW1', 'SE1', 'N1', 'EC1', 'WC1'],
+      coordinates: { lat: 51.5074, lng: -0.1278 },
+      specialties: [
+        'High-rise apartment moving',
+        'Congestion charge zone navigation',
+        'Historic property moving',
+        'International relocations via airports'
+      ]
+    },
+    {
+      slug: 'manchester',
+      name: 'Manchester',
+      population: '547,000',
+      description: 'Comprehensive moving services throughout Greater Manchester, including the city center, Salford, and surrounding areas.',
+      landmarks: ['Manchester Cathedral', 'Old Trafford', 'Etihad Stadium', 'Northern Quarter'],
+      areas: [
+        'City Centre', 'Northern Quarter', 'Castlefield', 'Ancoats', 'Salford',
+        'Trafford', 'Stockport', 'Tameside', 'Oldham', 'Rochdale', 'Bury',
+        'Bolton', 'Wigan'
+      ],
+      postcodes: ['M1', 'M2', 'M3', 'M4', 'M15', 'M16'],
+      coordinates: { lat: 53.4808, lng: -2.2426 },
+      specialties: [
+        'Industrial area relocations',
+        'University district moves',
+        'Warehouse to residential moves',
+        'Cross-city center navigation'
+      ]
+    },
+    {
+      slug: 'birmingham',
+      name: 'Birmingham',
+      population: '1.14 million',
+      description: 'Expert moving services across Birmingham and the West Midlands, from the Bullring to Edgbaston and beyond.',
+      landmarks: ['Bullring', 'Birmingham Museum', 'Cadbury World', 'Symphony Hall'],
+      areas: [
+        'City Centre', 'Edgbaston', 'Moseley', 'Kings Heath', 'Harborne',
+        'Selly Oak', 'Erdington', 'Aston', 'Handsworth', 'Perry Barr',
+        'Solihull', 'Sutton Coldfield'
+      ],
+      postcodes: ['B1', 'B2', 'B3', 'B4', 'B5'],
+      coordinates: { lat: 52.4862, lng: -1.8904 },
+      specialties: [
+        'Industrial heritage building moves',
+        'Multi-cultural area expertise',
+        'Canal-side property access',
+        'Midlands regional connections'
+      ]
+    },
+    {
+      slug: 'leeds',
+      name: 'Leeds',
+      population: '789,000',
+      description: 'Professional moving services throughout Leeds and West Yorkshire, from the city center to suburban areas.',
+      landmarks: ['Leeds Castle', 'Royal Armouries', 'Kirkstall Abbey', 'Headingley Stadium'],
+      areas: [
+        'City Centre', 'Headingley', 'Chapel Allerton', 'Roundhay', 'Horsforth',
+        'Otley', 'Wetherby', 'Garforth', 'Morley', 'Pudsey', 'Bradford', 'Wakefield'
+      ],
+      postcodes: ['LS1', 'LS2', 'LS3', 'LS4', 'LS6'],
+      coordinates: { lat: 53.8008, lng: -1.5491 },
+      specialties: [
+        'Yorkshire stone property moves',
+        'Student accommodation relocations',
+        'Rural to urban transitions',
+        'Historic mill conversions'
+      ]
+    },
+    {
+      slug: 'glasgow',
+      name: 'Glasgow',
+      population: '633,000',
+      description: 'Comprehensive moving services across Glasgow and surrounding areas in Scotland\'s largest city.',
+      landmarks: ['Glasgow Cathedral', 'Kelvingrove Museum', 'Glasgow Science Centre', 'Merchant City'],
+      areas: [
+        'City Centre', 'Merchant City', 'West End', 'Southside', 'East End',
+        'Dennistoun', 'Shawlands', 'Partick', 'Hillhead', 'Govan', 'Paisley'
+      ],
+      postcodes: ['G1', 'G2', 'G3', 'G4', 'G12'],
+      coordinates: { lat: 55.8642, lng: -4.2518 },
+      specialties: [
+        'Scottish tenement buildings',
+        'Riverside property access',
+        'Cross-border moves to England',
+        'Historic architecture handling'
+      ]
+    },
+    {
+      slug: 'bristol',
+      name: 'Bristol',
+      population: '467,000',
+      description: 'Expert moving services throughout Bristol and the South West, from Clifton to the Harbourside.',
+      landmarks: ['Clifton Suspension Bridge', 'SS Great Britain', 'Bristol Cathedral', 'At-Bristol Science Centre'],
+      areas: [
+        'City Centre', 'Clifton', 'Redland', 'Cotham', 'Montpelier', 'Stokes Croft',
+        'Harbourside', 'Southville', 'Bedminster', 'Easton', 'St. Pauls', 'Kingswood'
+      ],
+      postcodes: ['BS1', 'BS2', 'BS3', 'BS5', 'BS8'],
+      coordinates: { lat: 51.4545, lng: -2.5879 },
+      specialties: [
+        'Victorian terrace moves',
+        'Harbourside apartment relocations',
+        'Steep hill navigation',
+        'Period property expertise'
+      ]
+    },
+    {
+      slug: 'edinburgh',
+      name: 'Edinburgh',
+      population: '540,000',
+      description: 'Professional moving services across Scotland\'s capital, from the Old Town to New Town and beyond.',
+      landmarks: ['Edinburgh Castle', 'Royal Mile', 'Holyrood Palace', 'Arthur\'s Seat'],
+      areas: [
+        'Old Town', 'New Town', 'Leith', 'Stockbridge', 'Morningside', 'Bruntsfield',
+        'Marchmont', 'Newington', 'Portobello', 'Corstorphine', 'Craigmillar'
+      ],
+      postcodes: ['EH1', 'EH2', 'EH3', 'EH4', 'EH6'],
+      coordinates: { lat: 55.9533, lng: -3.1883 },
+      specialties: [
+        'UNESCO World Heritage site moves',
+        'Georgian and Victorian properties',
+        'Festival season relocations',
+        'Castle Rock area access'
+      ]
+    },
+    {
+      slug: 'liverpool',
+      name: 'Liverpool',
+      population: '498,000',
+      description: 'Comprehensive moving services across Liverpool and Merseyside, from the waterfront to suburban areas.',
+      landmarks: ['Albert Dock', 'The Cavern Club', 'Liverpool Cathedral', 'Royal Liver Building'],
+      areas: [
+        'City Centre', 'Albert Dock', 'Cavern Quarter', 'Baltic Triangle', 'Toxteth',
+        'Aigburth', 'Allerton', 'Wavertree', 'Woolton', 'West Derby', 'Crosby', 'Bootle'
+      ],
+      postcodes: ['L1', 'L2', 'L3', 'L4', 'L8'],
+      coordinates: { lat: 53.4084, lng: -2.9916 },
+      specialties: [
+        'Waterfront property moves',
+        'Maritime heritage buildings',
+        'Dockland regeneration areas',
+        'Mersey tunnel logistics'
+      ]
+    }
+  ];
+
+  return cities.map(city => ({
+    params: { city: city.slug },
+    props: { cityData: city }
+  }));
+}
+
+const { city } = Astro.params;
+const { cityData } = Astro.props;
+
+const title = `Moving Services ${cityData.name} | Professional Movers | Tigrex Move`;
+const description = `Professional moving services in ${cityData.name}. ${cityData.description} Fully insured, 24/7 availability. Get instant quote!`;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "MovingCompany"],
+  "name": `Tigrex Move - ${cityData.name}`,
+  "description": `Professional moving services in ${cityData.name} and surrounding areas`,
+  "telephone": "+44 7459 665 002",
+  "url": `https://tigrexmove.co.uk/areas/${city}`,
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": cityData.name,
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": cityData.coordinates.lat,
+        "longitude": cityData.coordinates.lng
+      }
+    }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "17 Queens Street, Portsea",
+    "addressLocality": "Portsmouth",
+    "postalCode": "PO1 3GB",
+    "addressCountry": "GB"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": `Moving Services in ${cityData.name}`,
+    "itemListElement": cityData.specialties.map(specialty => ({
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": specialty,
+        "areaServed": cityData.name
+      }
+    }))
+  }
+};
+
+const breadcrumbStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://tigrexmove.co.uk/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Areas",
+      "item": "https://tigrexmove.co.uk/areas"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": cityData.name,
+      "item": `https://tigrexmove.co.uk/areas/${city}`
+    }
+  ]
+};
+
+const combinedStructuredData = [structuredData, breadcrumbStructuredData];
+---
+
+<BaseLayout title={title} description={description} structuredData={combinedStructuredData}>
+  <Header />
+
+  <main id="main-content">
+    <!-- Breadcrumb -->
+    <nav class="bg-gray-50 py-4" aria-label="Breadcrumb">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ol class="flex items-center space-x-2 text-sm">
+          <li><a href="/" class="text-gray-500 hover:text-blue-600">Home</a></li>
+          <li class="text-gray-400">/</li>
+          <li><a href="/areas" class="text-gray-500 hover:text-blue-600">Areas</a></li>
+          <li class="text-gray-400">/</li>
+          <li class="text-gray-900 font-medium">{cityData.name}</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-blue-900 to-indigo-800 text-white py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+              Professional Moving Services in {cityData.name}
+            </h1>
+            <p class="text-xl sm:text-2xl text-blue-100 mb-8 leading-relaxed">
+              {cityData.description} Trusted by families and businesses across {cityData.name}.
+            </p>
+
+            <!-- Local Stats -->
+            <div class="grid grid-cols-2 gap-6 mb-8">
+              <div class="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+                <div class="text-2xl font-bold mb-1">{cityData.population}</div>
+                <div class="text-blue-200 text-sm">Population Served</div>
+              </div>
+              <div class="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+                <div class="text-2xl font-bold mb-1">{cityData.areas.length}+</div>
+                <div class="text-blue-200 text-sm">Areas Covered</div>
+              </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="#quote-form" class="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 text-center">
+                Get Local Quote
+              </a>
+              <a href="tel:+447459665002" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 text-center border border-white/20">
+                Call: +44 7459 665 002
+              </a>
+            </div>
+          </div>
+
+          <!-- Quote Form -->
+          <div>
+            <QuoteForm client:load />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Local Expertise -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            Local {cityData.name} Moving Expertise
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Our specialized knowledge of {cityData.name} ensures smooth, efficient moves throughout the area
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {cityData.specialties.map((specialty, index) => (
+            <div class="text-center" key={index}>
+              <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">{specialty}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Areas We Cover -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            Areas We Cover in {cityData.name}
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Professional moving services across all {cityData.name} neighborhoods and surrounding areas
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {cityData.areas.map((area, index) => (
+            <div class="bg-white rounded-lg p-4 text-center shadow-sm hover:shadow-md transition-shadow duration-200" key={index}>
+              <h3 class="font-semibold text-gray-900">{area}</h3>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-8 text-center">
+          <p class="text-gray-600 mb-4">
+            Don't see your area listed? We cover all of {cityData.name} and surrounding regions.
+          </p>
+          <a href="tel:+447459665002" class="text-blue-600 hover:text-blue-700 font-semibold">
+            Call to confirm service in your area: +44 7459 665 002
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Postcodes We Serve -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            {cityData.name} Postcodes We Serve
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Quick reference for our service coverage across {cityData.name}
+          </p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+          {cityData.postcodes.map((postcode, index) => (
+            <div class="bg-blue-100 text-blue-800 px-4 py-2 rounded-lg font-semibold" key={index}>
+              {postcode}
+            </div>
+          ))}
+        </div>
+
+        <div class="text-center">
+          <p class="text-gray-600">
+            And many more postcodes throughout {cityData.name}.
+            <a href="#quote-form" class="text-blue-600 hover:text-blue-700 font-semibold ml-1">Get a quote for your specific location.</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Local Landmarks -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            Moving Near {cityData.name} Landmarks
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            We know {cityData.name} inside and out, including moves near famous landmarks
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {cityData.landmarks.map((landmark, index) => (
+            <div class="text-center" key={index}>
+              <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-gray-900">{landmark}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Local Moving Tips -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+              Moving Tips for {cityData.name}
+            </h2>
+            <div class="space-y-6">
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <span class="text-blue-600 font-bold text-sm">1</span>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900 mb-2">Plan for Local Regulations</h3>
+                  <p class="text-gray-600">Check local parking restrictions and permits required for moving vehicles in {cityData.name}.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <span class="text-blue-600 font-bold text-sm">2</span>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900 mb-2">Consider Traffic Patterns</h3>
+                  <p class="text-gray-600">Schedule your move during off-peak hours to avoid {cityData.name}'s busiest traffic times.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <span class="text-blue-600 font-bold text-sm">3</span>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900 mb-2">Building Access Planning</h3>
+                  <p class="text-gray-600">Coordinate with building management in advance for elevators and loading dock access.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <span class="text-blue-600 font-bold text-sm">4</span>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900 mb-2">Weather Considerations</h3>
+                  <p class="text-gray-600">Be prepared for {cityData.name} weather conditions and how they might affect your moving day.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">Why Choose Local {cityData.name} Movers?</h3>
+            <ul class="space-y-4">
+              <li class="flex items-center space-x-3">
+                <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span class="text-gray-700">Deep knowledge of {cityData.name} streets and regulations</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span class="text-gray-700">Experience with local building types and access</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span class="text-gray-700">Established relationships with local authorities</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span class="text-gray-700">Quick response times across all {cityData.name} areas</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            What {cityData.name} Customers Say
+          </h2>
+          <p class="text-xl text-gray-600">
+            Real reviews from satisfied customers across {cityData.name}
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-white rounded-xl p-6 shadow-md">
+            <div class="flex items-center mb-4">
+              <div class="flex space-x-1">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                ))}
+              </div>
+            </div>
+            <p class="text-gray-600 mb-4">"Excellent service in {cityData.name}! The team knew exactly how to navigate our street and handled our Victorian terrace move perfectly. Highly recommend for local moves."</p>
+            <div class="font-semibold text-gray-900">Sarah Thompson</div>
+            <div class="text-sm text-gray-500">{cityData.name}</div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-md">
+            <div class="flex items-center mb-4">
+              <div class="flex space-x-1">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                ))}
+              </div>
+            </div>
+            <p class="text-gray-600 mb-4">"Professional movers who really understand {cityData.name}. They handled all the parking permits and made our apartment move seamless. Great local knowledge!"</p>
+            <div class="font-semibold text-gray-900">James Wilson</div>
+            <div class="text-sm text-gray-500">{cityData.name}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-blue-600 text-white">
+      <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+          Ready to Move in {cityData.name}?
+        </h2>
+        <p class="text-xl text-blue-100 mb-8">
+          Get your free quote today from {cityData.name}'s trusted moving professionals.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#quote-form" class="bg-white text-blue-600 hover:bg-gray-50 px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200">
+            Get Free Quote
+          </a>
+          <a href="tel:+447459665002" class="bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200">
+            Call: +44 7459 665 002
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

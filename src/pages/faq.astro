@@ -1,0 +1,304 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const title = "Frequently Asked Questions | Moving Services FAQ | Tigrex Move";
+const description = "Get answers to common questions about our moving services. Learn about pricing, booking, insurance, packing, and more. Professional UK moving company FAQ.";
+
+const faqs = [
+  {
+    question: "How far in advance should I book my move?",
+    answer: "We recommend booking at least 2-3 weeks in advance, especially during peak moving seasons (summer months and month-ends). However, we can accommodate short notice and emergency moves when possible. Our 24/7 service means we're available even for same-day emergency relocations."
+  },
+  {
+    question: "What's included in your moving service?",
+    answer: "Our standard service includes professional movers, transportation vehicle, basic packing materials (bubble wrap, tape, protective covers), furniture disassembly and reassembly, loading and unloading, and comprehensive insurance coverage. Additional services like full packing and storage are available."
+  },
+  {
+    question: "Are my belongings insured during the move?",
+    answer: "Yes, we provide comprehensive goods in transit insurance covering your belongings during the entire moving process. We also carry £1M public liability insurance. For high-value items, additional coverage options are available."
+  },
+  {
+    question: "Do you provide packing materials and services?",
+    answer: "Yes, we supply all necessary packing materials including boxes, bubble wrap, packing paper, and tape. We offer full professional packing services, partial packing for fragile items only, or just supply materials if you prefer to pack yourself."
+  },
+  {
+    question: "How do you calculate moving costs?",
+    answer: "Costs are based on several factors: property size, distance, access difficulty, number of items, additional services required, and timing. We provide transparent, fixed-price quotes with no hidden charges. Emergency and weekend moves may have additional fees."
+  },
+  {
+    question: "Can you move internationally?",
+    answer: "Yes, we provide international removal services worldwide. We handle customs documentation, shipping arrangements, and can coordinate with international partners. Services include air freight, sea freight, and road transport to Europe."
+  },
+  {
+    question: "What happens if something gets damaged?",
+    answer: "While rare due to our careful handling, any damage is covered by our comprehensive insurance. We conduct pre-move inventories and inspect items upon delivery. Claims are processed quickly and fairly according to our insurance terms."
+  },
+  {
+    question: "Do you work weekends and holidays?",
+    answer: "Yes, we operate 7 days a week including weekends and bank holidays. Our 24/7 emergency service is available for urgent moves. Weekend and holiday moves may incur additional charges but we're committed to accommodating your schedule."
+  },
+  {
+    question: "How do you handle fragile and valuable items?",
+    answer: "We specialize in handling fragile items using professional packing techniques, custom crating for artwork, and specialized equipment for items like pianos. Our team is trained in handling antiques, electronics, and other valuable possessions."
+  },
+  {
+    question: "Do you offer storage services?",
+    answer: "Yes, we have secure, climate-controlled storage facilities for both short-term and long-term needs. Our storage is monitored 24/7 with individual unit access. Perfect for moves with timing gaps or downsizing."
+  },
+  {
+    question: "Can you help with office and commercial moves?",
+    answer: "Absolutely! We specialize in commercial relocations including offices, retail spaces, warehouses, and industrial moves. We work around your business schedule to minimize downtime and can move over weekends or evenings."
+  },
+  {
+    question: "What payment methods do you accept?",
+    answer: "We accept cash, all major credit and debit cards, bank transfers, and can set up business accounts for corporate customers. Payment is typically required upon completion of the move, with deposits possible for large moves."
+  },
+  {
+    question: "Do you provide moving boxes and where can I get them?",
+    answer: "Yes, we provide moving boxes of all sizes along with other packing materials. You can order these in advance or as part of our packing service. We also offer eco-friendly plastic crates as an alternative to cardboard boxes."
+  },
+  {
+    question: "How long does a typical move take?",
+    answer: "Duration depends on property size and distance. Studio moves typically take 2-4 hours, 2-3 bedroom homes take 4-8 hours, and larger properties may take a full day. Long-distance moves may require multiple days including travel time."
+  },
+  {
+    question: "What areas do you cover?",
+    answer: "We provide moving services throughout the UK including London, Manchester, Birmingham, Leeds, Glasgow, Bristol, Edinburgh, Liverpool and all surrounding areas. We also cover remote locations and provide international services globally."
+  },
+  {
+    question: "Can I pack some items myself?",
+    answer: "Certainly! Many customers prefer a hybrid approach - we can pack fragile items and furniture while you handle personal items and clothes. We'll provide materials and guidance for items you pack yourself."
+  },
+  {
+    question: "What should I do to prepare for moving day?",
+    answer: "We'll provide a comprehensive pre-move checklist, but key steps include: confirming parking arrangements, preparing an essentials box, clearing pathways, backing up computer files, and keeping important documents with you."
+  },
+  {
+    question: "Do you dismantle and reassemble furniture?",
+    answer: "Yes, our team can disassemble furniture at your old property and reassemble it at your new home. This includes beds, wardrobes, tables, and other flat-pack furniture. We keep all fittings organized and labeled."
+  },
+  {
+    question: "Can you help with single item moves?",
+    answer: "Yes, our Man & Van service is perfect for single item moves, small loads, or furniture delivery. This is a cost-effective option for smaller jobs that don't require a full moving service."
+  },
+  {
+    question: "What if I need to reschedule my move?",
+    answer: "We understand plans can change. We offer flexible rescheduling options with as much notice as possible. While we try to accommodate changes, some fees may apply for last-minute rescheduling depending on circumstances."
+  }
+];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={structuredData}>
+  <Header />
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-blue-900 to-indigo-800 text-white py-20">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+          Frequently Asked Questions
+        </h1>
+        <p class="text-xl sm:text-2xl text-blue-100 leading-relaxed">
+          Everything you need to know about our moving services
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="py-16 bg-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            Common Questions About Our Moving Services
+          </h2>
+          <p class="text-xl text-gray-600">
+            Can't find what you're looking for? <a href="tel:+447459665002" class="text-blue-600 hover:text-blue-700 font-semibold">Call us at +44 7459 665 002</a>
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          {faqs.map((faq, index) => (
+            <div class="bg-white rounded-lg shadow-md border border-gray-200" key={index}>
+              <button
+                class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors duration-200"
+                onclick="toggleFAQ(this)"
+                aria-expanded="false"
+              >
+                <h3 class="text-lg font-semibold text-gray-900 pr-4">{faq.question}</h3>
+                <svg class="w-5 h-5 text-gray-500 transform transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+              <div class="hidden px-6 pb-4 border-t border-gray-100">
+                <p class="text-gray-600 leading-relaxed pt-4">{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Contact -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            Still Have Questions?
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Our friendly team is here to help with any questions about your move
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Call Us</h3>
+            <p class="text-gray-600 mb-4">Speak directly with our moving experts</p>
+            <a href="tel:+447459665002" class="text-blue-600 hover:text-blue-700 font-semibold text-lg">
+              +44 7459 665 002
+            </a>
+            <p class="text-sm text-gray-500 mt-2">Available 24/7</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Email Us</h3>
+            <p class="text-gray-600 mb-4">Send us your detailed questions</p>
+            <a href="mailto:tigrexmove@gmail.com" class="text-blue-600 hover:text-blue-700 font-semibold">
+              tigrexmove@gmail.com
+            </a>
+            <p class="text-sm text-gray-500 mt-2">Response within 2 hours</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Get Quote</h3>
+            <p class="text-gray-600 mb-4">Free, no-obligation moving quote</p>
+            <a href="/quote" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 inline-block">
+              Get Free Quote
+            </a>
+            <p class="text-sm text-gray-500 mt-2">Response in 15 minutes</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Emergency Contact -->
+    <section class="py-16 bg-red-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="bg-red-100 rounded-2xl p-8">
+          <div class="w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Need Emergency Moving Help?</h3>
+          <p class="text-lg text-gray-700 mb-6">
+            Our 24/7 emergency moving service is available for urgent relocations and last-minute moves.
+          </p>
+          <a href="tel:+447459665002" class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 inline-block">
+            Emergency Line: +44 7459 665 002
+          </a>
+          <p class="text-sm text-gray-600 mt-4">Same-day service available in major UK cities</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Additional Resources -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            Additional Resources
+          </h2>
+          <p class="text-xl text-gray-600">
+            Helpful guides and information for your move
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="bg-blue-100 rounded-lg p-6 mb-4">
+              <svg class="w-12 h-12 text-blue-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">Moving Checklist</h3>
+            <p class="text-gray-600 mb-4">Complete guide to planning your move with timeline and tasks.</p>
+            <a href="/blog/moving-checklist" class="text-blue-600 hover:text-blue-700 font-semibold">View Checklist →</a>
+          </div>
+
+          <div class="text-center">
+            <div class="bg-green-100 rounded-lg p-6 mb-4">
+              <svg class="w-12 h-12 text-green-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">Moving Costs Guide</h3>
+            <p class="text-gray-600 mb-4">Understand moving costs and how to budget for your relocation.</p>
+            <a href="/blog/moving-costs" class="text-blue-600 hover:text-blue-700 font-semibold">View Guide →</a>
+          </div>
+
+          <div class="text-center">
+            <div class="bg-purple-100 rounded-lg p-6 mb-4">
+              <svg class="w-12 h-12 text-purple-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">Packing Tips</h3>
+            <p class="text-gray-600 mb-4">Expert packing advice to protect your belongings during the move.</p>
+            <a href="/blog/packing-tips" class="text-blue-600 hover:text-blue-700 font-semibold">View Tips →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+
+  <script>
+    function toggleFAQ(button) {
+      const content = button.nextElementSibling;
+      const icon = button.querySelector('svg');
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+        button.setAttribute('aria-expanded', 'true');
+      } else {
+        content.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+        button.setAttribute('aria-expanded', 'false');
+      }
+    }
+  </script>
+</BaseLayout>

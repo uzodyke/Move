@@ -1,16 +1,471 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import QuoteForm from '../components/QuoteForm';
 
+const title = "Professional Moving Services UK | Tigrex Move - 24/7 Available";
+const description = "Professional moving company serving all UK areas. Residential, commercial moves, packing services, storage solutions. Fully insured, 24/7 emergency service. Get instant quote!";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Tigrex Move",
+  "image": "https://tigrexmove.co.uk/og-default.jpg",
+  "@id": "https://tigrexmove.co.uk/",
+  "url": "https://tigrexmove.co.uk/",
+  "telephone": "+44 7459 665 002",
+  "priceRange": "££",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "17 Queens Street, Portsea",
+    "addressLocality": "Portsmouth",
+    "postalCode": "PO1 3GB",
+    "addressCountry": "GB"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 50.8058,
+    "longitude": -1.0872
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "sameAs": [
+    "https://www.facebook.com/tigrexmove",
+    "https://twitter.com/tigrexmove"
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "127"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Moving Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Residential Moving",
+          "description": "Professional home and apartment moving services"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Commercial Moving",
+          "description": "Office and business relocation services"
+        }
+      }
+    ]
+  }
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title={title} description={description} structuredData={structuredData}>
+  <Header />
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white overflow-hidden">
+      <div class="absolute inset-0 bg-black/20"></div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <!-- Hero Content -->
+          <div class="lg:pr-8">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+              Professional Moving Services
+              <span class="text-blue-300 block">Across the UK</span>
+            </h1>
+            <p class="text-xl sm:text-2xl text-blue-100 mb-8 leading-relaxed">
+              Trusted by thousands. Fully insured, 24/7 emergency service. From single items to complete home moves.
+            </p>
+
+            <!-- Trust Indicators -->
+            <div class="flex flex-wrap items-center gap-6 mb-8">
+              <div class="flex items-center space-x-2">
+                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span class="text-sm">Fully Insured</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span class="text-sm">24/7 Available</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <span class="text-sm">4.8/5 Rating</span>
+              </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="#quote-form" class="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 text-center">
+                Get Instant Quote
+              </a>
+              <a href="tel:+447459665002" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 text-center border border-white/20">
+                Call: +44 7459 665 002
+              </a>
+            </div>
+
+            <!-- Emergency Notice -->
+            <div class="mt-8 bg-red-900/30 backdrop-blur-sm border border-red-500/30 rounded-lg p-4">
+              <div class="flex items-center space-x-3">
+                <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <div>
+                  <p class="text-red-100 font-semibold">Emergency Moving Service</p>
+                  <p class="text-red-200 text-sm">Need urgent help? Call +44 7700 000 000</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quote Form -->
+          <div class="lg:pl-8">
+            <QuoteForm client:load />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            Complete Moving Solutions
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            From residential moves to commercial relocations, we provide comprehensive moving services across the UK
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Service Cards -->
+          <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100">
+            <div class="p-8">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2v2z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Residential Moving</h3>
+              <p class="text-gray-600 mb-6">Professional home and apartment moves with expert packing and careful handling of your belongings.</p>
+              <a href="/services/residential-moving" class="text-blue-600 hover:text-blue-700 font-semibold flex items-center">
+                Learn More
+                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100">
+            <div class="p-8">
+              <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Commercial Moving</h3>
+              <p class="text-gray-600 mb-6">Business relocations, office moves, and commercial services with minimal downtime and maximum efficiency.</p>
+              <a href="/services/commercial-moving" class="text-blue-600 hover:text-blue-700 font-semibold flex items-center">
+                Learn More
+                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100">
+            <div class="p-8">
+              <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Packing Services</h3>
+              <p class="text-gray-600 mb-6">Professional packing with high-quality materials to ensure your items arrive safely at their destination.</p>
+              <a href="/services/packing-services" class="text-blue-600 hover:text-blue-700 font-semibold flex items-center">
+                Learn More
+                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100">
+            <div class="p-8">
+              <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
+                <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m3 0H4a2 2 0 00-2 2v13a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zM9 11v4m6-4v4"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Storage Solutions</h3>
+              <p class="text-gray-600 mb-6">Secure, climate-controlled storage facilities for short-term and long-term storage needs.</p>
+              <a href="/services/storage-solutions" class="text-blue-600 hover:text-blue-700 font-semibold flex items-center">
+                Learn More
+                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100">
+            <div class="p-8">
+              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-6">
+                <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">International Removals</h3>
+              <p class="text-gray-600 mb-6">Global moving services with customs clearance and international shipping expertise.</p>
+              <a href="/services/international-removals" class="text-blue-600 hover:text-blue-700 font-semibold flex items-center">
+                Learn More
+                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100">
+            <div class="p-8">
+              <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-6">
+                <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Man & Van Service</h3>
+              <p class="text-gray-600 mb-6">Flexible, cost-effective moving solution for smaller moves and single item transportation.</p>
+              <a href="/services/man-and-van" class="text-blue-600 hover:text-blue-700 font-semibold flex items-center">
+                Learn More
+                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            Why Choose Tigrex Move?
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Over 10 years of experience in the moving industry with thousands of successful moves
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Fully Insured</h3>
+            <p class="text-gray-600">Comprehensive insurance coverage for complete peace of mind during your move.</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">24/7 Service</h3>
+            <p class="text-gray-600">Round-the-clock availability including weekends and emergency moves.</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Expert Team</h3>
+            <p class="text-gray-600">Trained and experienced professionals who handle your belongings with care.</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Fair Pricing</h3>
+            <p class="text-gray-600">Transparent, competitive pricing with no hidden fees or surprise charges.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Areas We Serve -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            Areas We Serve Across the UK
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Professional moving services available in all major UK cities and towns
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+          <a href="/areas/london" class="text-center p-4 bg-gray-50 hover:bg-blue-50 rounded-lg transition-colors duration-200">
+            <h3 class="font-semibold text-gray-900 hover:text-blue-600">London</h3>
+          </a>
+          <a href="/areas/manchester" class="text-center p-4 bg-gray-50 hover:bg-blue-50 rounded-lg transition-colors duration-200">
+            <h3 class="font-semibold text-gray-900 hover:text-blue-600">Manchester</h3>
+          </a>
+          <a href="/areas/birmingham" class="text-center p-4 bg-gray-50 hover:bg-blue-50 rounded-lg transition-colors duration-200">
+            <h3 class="font-semibold text-gray-900 hover:text-blue-600">Birmingham</h3>
+          </a>
+          <a href="/areas/leeds" class="text-center p-4 bg-gray-50 hover:bg-blue-50 rounded-lg transition-colors duration-200">
+            <h3 class="font-semibold text-gray-900 hover:text-blue-600">Leeds</h3>
+          </a>
+          <a href="/areas/glasgow" class="text-center p-4 bg-gray-50 hover:bg-blue-50 rounded-lg transition-colors duration-200">
+            <h3 class="font-semibold text-gray-900 hover:text-blue-600">Glasgow</h3>
+          </a>
+          <a href="/areas/bristol" class="text-center p-4 bg-gray-50 hover:bg-blue-50 rounded-lg transition-colors duration-200">
+            <h3 class="font-semibold text-gray-900 hover:text-blue-600">Bristol</h3>
+          </a>
+          <a href="/areas/edinburgh" class="text-center p-4 bg-gray-50 hover:bg-blue-50 rounded-lg transition-colors duration-200">
+            <h3 class="font-semibold text-gray-900 hover:text-blue-600">Edinburgh</h3>
+          </a>
+          <a href="/areas/liverpool" class="text-center p-4 bg-gray-50 hover:bg-blue-50 rounded-lg transition-colors duration-200">
+            <h3 class="font-semibold text-gray-900 hover:text-blue-600">Liverpool</h3>
+          </a>
+        </div>
+
+        <div class="text-center">
+          <a href="/areas" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200 inline-block">
+            View All Service Areas
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            What Our Customers Say
+          </h2>
+          <div class="flex items-center justify-center space-x-2">
+            <div class="flex space-x-1">
+              {[...Array(5)].map((_, i) => (
+                <svg key={i} class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              ))}
+            </div>
+            <span class="text-gray-600">4.8/5 from 127+ reviews</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white rounded-xl p-6 shadow-md">
+            <div class="flex items-center mb-4">
+              <div class="flex space-x-1">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                ))}
+              </div>
+            </div>
+            <p class="text-gray-600 mb-4">"Exceptional service from start to finish. The team was professional, careful with our belongings, and made our house move stress-free."</p>
+            <div class="font-semibold text-gray-900">Sarah Johnson</div>
+            <div class="text-sm text-gray-500">London</div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-md">
+            <div class="flex items-center mb-4">
+              <div class="flex space-x-1">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                ))}
+              </div>
+            </div>
+            <p class="text-gray-600 mb-4">"Best moving company we've used. Punctual, efficient, and very reasonably priced. Highly recommend for anyone moving in Manchester."</p>
+            <div class="font-semibold text-gray-900">Michael Chen</div>
+            <div class="text-sm text-gray-500">Manchester</div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-md">
+            <div class="flex items-center mb-4">
+              <div class="flex space-x-1">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                ))}
+              </div>
+            </div>
+            <p class="text-gray-600 mb-4">"Emergency move handled perfectly. Called them on Sunday and they helped us move the same day. Outstanding customer service!"</p>
+            <div class="font-semibold text-gray-900">Emma Wilson</div>
+            <div class="text-sm text-gray-500">Birmingham</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-blue-600 text-white">
+      <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+          Ready to Move? Get Your Free Quote Today
+        </h2>
+        <p class="text-xl text-blue-100 mb-8">
+          Professional, reliable, and affordable moving services across the UK. Available 24/7.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#quote-form" class="bg-white text-blue-600 hover:bg-gray-50 px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200">
+            Get Free Quote
+          </a>
+          <a href="tel:+447459665002" class="bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200">
+            Call: +44 7459 665 002
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

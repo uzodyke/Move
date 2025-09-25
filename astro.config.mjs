@@ -1,5 +1,33 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
+import tailwindcss from '@tailwindcss/vite';
+import react from '@astrojs/react';
+
 // https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  site: 'https://tigrexmove.co.uk',
+
+  vite: {
+    plugins: [tailwindcss()],
+    build: {
+      cssCodeSplit: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'react-vendor': ['react', 'react-dom']
+          }
+        }
+      }
+    }
+  },
+
+  build: {
+    format: 'file',
+    inlineStylesheets: 'auto'
+  },
+
+  compressHTML: true,
+
+  integrations: [react()]
+});

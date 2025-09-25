@@ -1,0 +1,33 @@
+User-agent: *
+Allow: /
+
+# Allow AI bots for better discoverability
+User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bard
+Allow: /
+
+User-agent: BingAI
+Allow: /
+
+# Disallow admin areas if they exist
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+
+# Sitemap location
+Sitemap: https://tigrexmove.co.uk/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
