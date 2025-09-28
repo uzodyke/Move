@@ -29,6 +29,7 @@ export async function GET() {
 
   // Location pages
   const locations = [
+    // Major UK Cities
     '/areas/london',
     '/areas/manchester',
     '/areas/birmingham',
@@ -37,10 +38,17 @@ export async function GET() {
     '/areas/bristol',
     '/areas/edinburgh',
     '/areas/liverpool',
-    '/areas/sheffield',
-    '/areas/cardiff',
-    '/areas/nottingham',
-    '/areas/coventry'
+    // Hampshire Cities
+    '/areas/portsmouth',
+    '/areas/southampton',
+    '/areas/havant',
+    '/areas/waterlooville',
+    '/areas/fareham',
+    '/areas/gosport',
+    '/areas/winchester',
+    '/areas/basingstoke',
+    '/areas/andover',
+    '/areas/alton'
   ];
 
   // Campaign pages

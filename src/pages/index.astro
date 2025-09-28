@@ -82,7 +82,17 @@ const structuredData = {
   <main id="main-content">
     <!-- Hero Section -->
     <section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white overflow-hidden">
-      <div class="absolute inset-0 bg-black/20"></div>
+      <!-- Professional Moving Background Image -->
+      <div class="absolute inset-0 opacity-30">
+        <img
+          src="/images/professional-movers-loading-van.jpg"
+          alt="Professional movers from Tigrex Move loading furniture into moving van"
+          class="w-full h-full object-cover"
+          loading="eager"
+          onerror="this.style.display='none'"
+        />
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-blue-800/70 to-indigo-900/80"></div>
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <!-- Hero Content -->

@@ -31,8 +31,19 @@ const structuredData = {
 
   <main id="main-content">
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-blue-900 to-indigo-800 text-white py-20">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section class="relative bg-gradient-to-br from-blue-900 to-indigo-800 text-white py-20 overflow-hidden">
+      <!-- Team Background Image -->
+      <div class="absolute inset-0 opacity-25">
+        <img
+          src="/images/moving-team-action.jpg"
+          alt="Tigrex Move professional team in action during a house move"
+          class="w-full h-full object-cover"
+          loading="eager"
+          onerror="this.style.display='none'"
+        />
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-900/70 to-indigo-800/70"></div>
+      <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
           About Tigrex Move
         </h1>

@@ -44,8 +44,19 @@ const structuredData = {
 
   <main id="main-content">
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-blue-900 to-indigo-800 text-white py-20">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section class="relative bg-gradient-to-br from-blue-900 to-indigo-800 text-white py-20 overflow-hidden">
+      <!-- Moving Truck Background -->
+      <div class="absolute inset-0 opacity-20">
+        <img
+          src="/images/moving-truck-street.jpg"
+          alt="Tigrex Move truck on Portsmouth street ready for house move"
+          class="w-full h-full object-cover"
+          loading="eager"
+          onerror="this.style.display='none'"
+        />
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-900/80 to-indigo-800/80"></div>
+      <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
           Contact Tigrex Move
         </h1>

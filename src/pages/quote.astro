@@ -1,0 +1,239 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import QuoteForm from '../components/QuoteForm';
+
+const title = "Free Moving Quote | Instant Quote Calculator | Tigrex Move UK";
+const description = "Get your free moving quote instantly. Professional moving services across the UK. Transparent pricing, no hidden fees. 24/7 availability. Call +44 7459 665 002";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Free Moving Quote",
+  "description": "Free instant moving quote for residential and commercial relocations across the UK",
+  "provider": {
+    "@type": "MovingCompany",
+    "name": "Tigrex Move",
+    "telephone": "+44 7459 665 002",
+    "email": "tigrexmove@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "17 Queens Street, Portsea",
+      "addressLocality": "Portsmouth",
+      "postalCode": "PO1 3GB",
+      "addressCountry": "GB"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "GBP",
+    "description": "Free moving quote and consultation"
+  }
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={structuredData}>
+  <Header />
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-green-600 to-blue-700 text-white py-20 overflow-hidden">
+      <!-- Quote Background -->
+      <div class="absolute inset-0 opacity-25">
+        <img
+          src="/images/quote-consultation.jpg"
+          alt="Professional moving consultant providing free quote consultation"
+          class="w-full h-full object-cover"
+          loading="eager"
+          onerror="this.style.display='none'"
+        />
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-br from-green-600/80 to-blue-700/80"></div>
+
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+          Get Your Free Moving Quote
+        </h1>
+        <p class="text-xl sm:text-2xl text-green-100 leading-relaxed mb-8">
+          Instant, transparent pricing with no hidden fees. Response within 15 minutes.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <div class="text-2xl font-bold">£0</div>
+            <div class="text-sm">Quote Cost</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <div class="text-2xl font-bold">15min</div>
+            <div class="text-sm">Response Time</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <div class="text-2xl font-bold">24/7</div>
+            <div class="text-sm">Availability</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote Form Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <!-- Quote Form -->
+          <div>
+            <QuoteForm client:load />
+          </div>
+
+          <!-- Why Choose Us -->
+          <div class="lg:pl-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">
+              Why Choose Tigrex Move?
+            </h2>
+
+            <div class="space-y-6">
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900 mb-2">Transparent Pricing</h3>
+                  <p class="text-gray-600">No hidden fees or surprise charges. What we quote is what you pay.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900 mb-2">Fully Insured</h3>
+                  <p class="text-gray-600">£1M public liability insurance and goods in transit coverage included.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900 mb-2">24/7 Availability</h3>
+                  <p class="text-gray-600">Emergency and weekend moves available. We work around your schedule.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-yellow-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900 mb-2">4.8/5 Star Rating</h3>
+                  <p class="text-gray-600">Based on 127+ customer reviews. Professional, reliable service every time.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900 mb-2">UK Wide Coverage</h3>
+                  <p class="text-gray-600">Serving London, Manchester, Birmingham, Hampshire and across the UK.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Call Option -->
+            <div class="mt-8 p-6 bg-blue-50 rounded-xl">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Prefer to Talk?</h3>
+              <p class="text-gray-600 mb-4">Get instant quote over the phone with our moving experts</p>
+              <a href="tel:+447459665002" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 inline-block">
+                Call: +44 7459 665 002
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Information -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            Transparent Pricing Guide
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Our pricing is based on property size, distance, and specific requirements. No hidden fees.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-gray-50 rounded-xl p-6 text-center">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Studio/1-Bed</h3>
+            <div class="text-3xl font-bold text-blue-600 mb-2">From £299</div>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Professional team</li>
+              <li>• Transport included</li>
+              <li>• Basic packing materials</li>
+              <li>• Full insurance</li>
+            </ul>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-6 text-center">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">2-3 Bedroom</h3>
+            <div class="text-3xl font-bold text-blue-600 mb-2">From £599</div>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• 2-3 person team</li>
+              <li>• Large vehicle</li>
+              <li>• Furniture disassembly</li>
+              <li>• Packing materials</li>
+            </ul>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-6 text-center">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">4+ Bedroom</h3>
+            <div class="text-3xl font-bold text-blue-600 mb-2">From £899</div>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• 3-4 person team</li>
+              <li>• Multiple vehicles</li>
+              <li>• Full service option</li>
+              <li>• Premium materials</li>
+            </ul>
+          </div>
+
+          <div class="bg-gradient-to-br from-green-50 to-blue-50 rounded-xl p-6 text-center border-2 border-green-200">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Custom Quote</h3>
+            <div class="text-2xl font-bold text-green-600 mb-2">Best Price</div>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Commercial moves</li>
+              <li>• International removals</li>
+              <li>• Specialist items</li>
+              <li>• Storage solutions</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="text-center mt-8">
+          <p class="text-gray-600 mb-4">Prices include VAT. Additional services available at competitive rates.</p>
+          <a href="#quote-form" class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200">
+            Get Your Exact Quote
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,455 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = "Areas We Serve - Professional Moving Services Across UK | Tigrex Move";
+const description = "Professional moving services across the UK. Serving London, Manchester, Birmingham, Leeds, Glasgow, Bristol, Edinburgh, Liverpool, Portsmouth, Southampton and all Hampshire cities.";
+
+// Define all served areas
+const ukCities = [
+  {
+    name: "London",
+    slug: "london",
+    description: "Complete moving services across all London boroughs and postcodes",
+    population: "9.6M residents",
+    highlight: "Capital City",
+    image: "/images/london-skyline.jpg"
+  },
+  {
+    name: "Manchester",
+    slug: "manchester",
+    description: "Professional moving services throughout Greater Manchester",
+    population: "2.9M residents",
+    highlight: "Industrial Heart",
+    image: "/images/manchester-cityscape.jpg"
+  },
+  {
+    name: "Birmingham",
+    slug: "birmingham",
+    description: "Comprehensive relocation services in the West Midlands",
+    population: "2.6M residents",
+    highlight: "Second City",
+    image: "/images/birmingham-center.jpg"
+  },
+  {
+    name: "Leeds",
+    slug: "leeds",
+    description: "Expert moving services across West Yorkshire",
+    population: "2.3M residents",
+    highlight: "Northern Hub",
+    image: "/images/leeds-business.jpg"
+  },
+  {
+    name: "Glasgow",
+    slug: "glasgow",
+    description: "Professional removals throughout Scotland's largest city",
+    population: "1.9M residents",
+    highlight: "Scottish Gateway",
+    image: "/images/glasgow-riverside.jpg"
+  },
+  {
+    name: "Bristol",
+    slug: "bristol",
+    description: "Complete moving solutions in the South West",
+    population: "1.7M residents",
+    highlight: "Creative Hub",
+    image: "/images/bristol-harbourside.jpg"
+  },
+  {
+    name: "Edinburgh",
+    slug: "edinburgh",
+    description: "Capital city moving services across all districts",
+    population: "1.4M residents",
+    highlight: "Scottish Capital",
+    image: "/images/edinburgh-castle.jpg"
+  },
+  {
+    name: "Liverpool",
+    slug: "liverpool",
+    description: "Professional relocations throughout Merseyside",
+    population: "1.4M residents",
+    highlight: "Maritime City",
+    image: "/images/liverpool-waterfront.jpg"
+  }
+];
+
+const hampshireCities = [
+  {
+    name: "Portsmouth",
+    slug: "portsmouth",
+    description: "Our headquarters - expert local moving services",
+    population: "238K residents",
+    highlight: "Naval Heritage",
+    image: "/images/portsmouth-harbor.jpg"
+  },
+  {
+    name: "Southampton",
+    slug: "southampton",
+    description: "Professional moving services in the cruise capital",
+    population: "279K residents",
+    highlight: "Cruise Capital",
+    image: "/images/southampton-docks.jpg"
+  },
+  {
+    name: "Havant",
+    slug: "havant",
+    description: "Local moving experts serving Havant and surrounding areas",
+    population: "45K residents",
+    highlight: "Market Town",
+    image: "/images/havant-town.jpg"
+  },
+  {
+    name: "Waterlooville",
+    slug: "waterlooville",
+    description: "Reliable removals throughout Waterlooville",
+    population: "64K residents",
+    highlight: "Growing Community",
+    image: "/images/waterlooville-center.jpg"
+  },
+  {
+    name: "Fareham",
+    slug: "fareham",
+    description: "Comprehensive moving services in Fareham",
+    population: "56K residents",
+    highlight: "Historic Market",
+    image: "/images/fareham-high-street.jpg"
+  },
+  {
+    name: "Gosport",
+    slug: "gosport",
+    description: "Professional removals across Gosport peninsula",
+    population: "85K residents",
+    highlight: "Peninsula Town",
+    image: "/images/gosport-marina.jpg"
+  },
+  {
+    name: "Winchester",
+    slug: "winchester",
+    description: "Expert moving services in the ancient capital",
+    population: "48K residents",
+    highlight: "Historic Capital",
+    image: "/images/winchester-cathedral.jpg"
+  },
+  {
+    name: "Basingstoke",
+    slug: "basingstoke",
+    description: "Complete relocation solutions in North Hampshire",
+    population: "113K residents",
+    highlight: "Business Hub",
+    image: "/images/basingstoke-center.jpg"
+  },
+  {
+    name: "Andover",
+    slug: "andover",
+    description: "Professional moving services throughout Andover",
+    population: "59K residents",
+    highlight: "Market Town",
+    image: "/images/andover-town.jpg"
+  },
+  {
+    name: "Alton",
+    slug: "alton",
+    description: "Reliable removals in East Hampshire",
+    population: "17K residents",
+    highlight: "Historic Market",
+    image: "/images/alton-high-street.jpg"
+  }
+];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Moving Services UK Coverage Areas",
+  "description": "Professional moving and removal services across the UK including London, Manchester, Birmingham, Leeds, Glasgow, Bristol, Edinburgh, Liverpool and all Hampshire cities",
+  "provider": {
+    "@type": "MovingCompany",
+    "name": "Tigrex Move",
+    "telephone": "+44 7459 665 002",
+    "email": "tigrexmove@gmail.com"
+  },
+  "areaServed": [
+    ...ukCities.map(city => ({
+      "@type": "City",
+      "name": city.name,
+      "addressCountry": "GB"
+    })),
+    ...hampshireCities.map(city => ({
+      "@type": "City",
+      "name": city.name,
+      "addressCountry": "GB",
+      "containedInPlace": {
+        "@type": "AdministrativeArea",
+        "name": "Hampshire"
+      }
+    }))
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} structuredData={structuredData}>
+  <Header />
+
+  <main id="main-content">
+    <!-- Hero Section with Moving Background -->
+    <section class="relative bg-gradient-to-br from-blue-900 to-indigo-800 text-white py-20 overflow-hidden">
+      <!-- Background Image -->
+      <div class="absolute inset-0 opacity-20">
+        <img
+          src="/images/professional-movers-loading-van.jpg"
+          alt="Professional movers loading furniture into van"
+          class="w-full h-full object-cover"
+          loading="eager"
+        />
+      </div>
+
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+          Areas We Serve
+        </h1>
+        <p class="text-xl sm:text-2xl text-blue-100 leading-relaxed mb-8">
+          Professional moving services across the UK - from major cities to local Hampshire communities
+        </p>
+        <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 inline-block">
+          <p class="text-lg font-semibold mb-2">🚚 18+ Cities Served • 📦 10,000+ Successful Moves • ⭐ 4.8/5 Rating</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search and Filter -->
+    <section class="py-8 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-8">
+          <div class="bg-white rounded-lg shadow-md p-6 max-w-md mx-auto">
+            <input
+              type="text"
+              placeholder="Search for your city..."
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              id="citySearch"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Major UK Cities -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            Major UK Cities
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Comprehensive moving services in the UK's largest cities and metropolitan areas
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="majorCities">
+          {ukCities.map((city) => (
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 city-card">
+              <div class="relative h-48 bg-gradient-to-br from-blue-500 to-indigo-600">
+                <div class="absolute inset-0 bg-black/20"></div>
+                <div class="absolute top-4 right-4">
+                  <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                    {city.highlight}
+                  </span>
+                </div>
+                <div class="absolute bottom-4 left-4 text-white">
+                  <h3 class="text-xl font-bold mb-1">{city.name}</h3>
+                  <p class="text-blue-100 text-sm">{city.population}</p>
+                </div>
+              </div>
+
+              <div class="p-6">
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                  {city.description}
+                </p>
+
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center space-x-4 text-sm text-gray-500">
+                    <div class="flex items-center space-x-1">
+                      <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                      <span>Same Day</span>
+                    </div>
+                    <div class="flex items-center space-x-1">
+                      <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                      </svg>
+                      <span>Insured</span>
+                    </div>
+                  </div>
+                </div>
+
+                <a
+                  href={`/areas/${city.slug}`}
+                  class="mt-4 block w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-center px-6 py-3 rounded-lg font-semibold transition-all duration-200"
+                >
+                  View Services
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Hampshire Cities -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            Hampshire & Local Areas
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Local expertise in Hampshire - where our story began. Serving Portsmouth, Southampton and surrounding communities.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="hampshireCities">
+          {hampshireCities.map((city) => (
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 city-card">
+              <div class="relative h-40 bg-gradient-to-br from-green-500 to-teal-600">
+                <div class="absolute inset-0 bg-black/20"></div>
+                {city.slug === 'portsmouth' && (
+                  <div class="absolute top-3 right-3">
+                    <span class="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                      HQ
+                    </span>
+                  </div>
+                )}
+                <div class="absolute top-3 left-3">
+                  <span class="bg-green-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                    {city.highlight}
+                  </span>
+                </div>
+                <div class="absolute bottom-3 left-3 text-white">
+                  <h3 class="text-lg font-bold mb-1">{city.name}</h3>
+                  <p class="text-green-100 text-xs">{city.population}</p>
+                </div>
+              </div>
+
+              <div class="p-4">
+                <p class="text-gray-600 text-sm mb-3 leading-relaxed">
+                  {city.description}
+                </p>
+
+                <div class="flex items-center justify-between text-xs text-gray-500 mb-3">
+                  <div class="flex items-center space-x-1">
+                    <svg class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    </svg>
+                    <span>Local Team</span>
+                  </div>
+                  <div class="flex items-center space-x-1">
+                    <svg class="w-3 h-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span>Quick Response</span>
+                  </div>
+                </div>
+
+                <a
+                  href={`/areas/${city.slug}`}
+                  class="block w-full bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white text-center px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200"
+                >
+                  Local Services
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Coverage Map Section -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            UK Coverage Map
+          </h2>
+          <p class="text-xl text-gray-600">
+            Nationwide moving services with local expertise
+          </p>
+        </div>
+
+        <div class="bg-gray-100 rounded-2xl p-8 text-center">
+          <div class="max-w-2xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+              <div class="bg-blue-100 rounded-lg p-3">
+                <div class="font-bold text-blue-800">Scotland</div>
+                <div class="text-blue-600">Glasgow, Edinburgh</div>
+              </div>
+              <div class="bg-green-100 rounded-lg p-3">
+                <div class="font-bold text-green-800">North England</div>
+                <div class="text-green-600">Leeds, Manchester, Liverpool</div>
+              </div>
+              <div class="bg-purple-100 rounded-lg p-3">
+                <div class="font-bold text-purple-800">Midlands</div>
+                <div class="text-purple-600">Birmingham</div>
+              </div>
+              <div class="bg-orange-100 rounded-lg p-3">
+                <div class="font-bold text-orange-800">South England</div>
+                <div class="text-orange-600">London, Bristol, Hampshire</div>
+              </div>
+            </div>
+
+            <div class="mt-6 p-6 bg-blue-50 rounded-xl">
+              <h3 class="font-bold text-gray-900 mb-2">Plus Coverage To:</h3>
+              <p class="text-gray-600">
+                International destinations • European removals • Worldwide shipping • Remote UK areas
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
+      <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+          Ready to Move?
+        </h2>
+        <p class="text-xl text-blue-100 mb-8">
+          Get your free quote today - available in all our service areas
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/quote" class="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200">
+            Get Free Quote
+          </a>
+          <a href="tel:+447459665002" class="bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 border-2 border-blue-400">
+            Call: +44 7459 665 002
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+
+  <script>
+    // City search functionality
+    const searchInput = document.getElementById('citySearch');
+    const cityCards = document.querySelectorAll('.city-card');
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+
+        cityCards.forEach(card => {
+          const cityName = card.querySelector('h3').textContent.toLowerCase();
+          const description = card.querySelector('p').textContent.toLowerCase();
+
+          if (cityName.includes(searchTerm) || description.includes(searchTerm)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    }
+  </script>
+</BaseLayout>
