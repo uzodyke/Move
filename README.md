@@ -1,33 +1,31 @@
-# Astro Starter Kit: Minimal
+# Tigrex Move - Professional Moving Company Website
 
-```sh
-npm create astro@latest -- --template minimal
-```
+🚚 **Professional moving services across the UK**
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🌐 Live Website
+- **Production**: https://uzodyke.github.io/Move
+- **Domain**: tigrexmove.co.uk (when configured)
 
-## 🚀 Project Structure
+## 📍 Coverage Areas
+- **Major UK Cities**: London, Manchester, Birmingham, Leeds, Glasgow, Bristol, Edinburgh, Liverpool
+- **Hampshire**: Portsmouth (HQ), Southampton, Winchester, Basingstoke, Havant, Waterlooville, Fareham, Gosport, Andover, Alton
 
-Inside of your Astro project, you'll see the following folders and files:
+## 🚀 Features
+- ✅ 25 SEO-optimized pages
+- ✅ Professional moving imagery
+- ✅ Working quote forms with Formspree
+- ✅ Automated deployment with GitHub Actions
+- ✅ Mobile-responsive design
+- ✅ 4.8/5 star rated service
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## 📞 Contact
+- **Phone**: +44 7459 665 002
+- **Email**: tigrexmove@gmail.com
+- **Address**: 17 Queens Street, Portsea, Portsmouth, PO1 3GB
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🛠️ Development
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
+All commands are run from the root of the project:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
@@ -35,9 +33,14 @@ All commands are run from the root of the project, from a terminal:
 | `npm run dev`             | Starts local dev server at `localhost:4321`      |
 | `npm run build`           | Build your production site to `./dist/`          |
 | `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+## 🚀 Deployment
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+This site uses automated deployment via GitHub Actions:
+- **Auto-deploys** on every push to main branch
+- **GitHub Pages** hosting at uzodyke.github.io/Move
+- **Optional FTP deployment** to custom domain
+
+See `DEPLOYMENT.md` for detailed setup instructions.
+
+Built with **Astro + React + Tailwind CSS**
