@@ -1,0 +1,21 @@
+# Professional Moving Images
+#
+# This directory contains optimized images for the Tigrex Move website
+# Images are optimized for performance with WebP format and proper sizing
+#
+# Key images needed:
+# - professional-movers-loading-van.jpg - Hero background
+# - moving-team-action.jpg - About page background
+# - furniture-packing.jpg - Services background
+# - happy-customers.jpg - Testimonials background
+# - moving-truck-street.jpg - Contact page background
+#
+# City-specific images for location pages:
+# - london-skyline.jpg, manchester-cityscape.jpg, etc.
+# - portsmouth-harbor.jpg, southampton-docks.jpg, etc.
+#
+# All images should be:
+# - 1920x1080 or similar high-quality resolution
+# - Optimized for web (under 500KB each)
+# - Professional and brand-appropriate
+# - Include proper alt text for accessibility

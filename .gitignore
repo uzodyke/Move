@@ -1,5 +1,5 @@
 # build output
-dist/
+# dist/ - commented out to include built files in repo for deployment
 # generated types
 .astro/
 
